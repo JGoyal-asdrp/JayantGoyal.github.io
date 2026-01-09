@@ -1,0 +1,92 @@
+/* Reset / base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: Arial, sans-serif;
+}
+
+.page-grid {
+  background-color: #2b2b2b; /* dark gray */
+}
+
+/* Vertical grid */
+.page-grid {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  min-height: 100vh;
+}
+
+/* Header grid */
+.header-grid {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  padding: 1rem 2rem;
+  border-bottom: none;
+}
+
+/* Logo */
+.logo img {
+  height: 80px;      /* Adjust as needed */
+  width: auto;
+  display: block;
+}
+
+.socials {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.socials img {
+  height: 24px;
+  width: 24px;
+  display: block;
+}
+
+.socials a {
+  text-decoration: none;
+  color: #333;
+}
+
+/* Hamburger menu button */
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.hamburger span {
+  width: 26px;
+  height: 3px;
+  background-color: white;
+  display: block;
+}
+
+/* Main content */
+.content {
+  padding: 2rem;
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: 0.1fr 0.8fr 0.1fr;
+  height: 100%;
+}
+
+.center-column {
+  background-color: #3a3a3a; /* lighter gray */
+  padding: 2rem;
+  border-radius: 15px ;
+}
