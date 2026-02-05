@@ -1,92 +1,275 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Jayant Goyal</title>
-  <link rel="stylesheet" href="css/landing.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Space+Grotesk:wght@500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/landing.css" />
 </head>
-<body>
-  <div class="page-grid">
-    <!-- Top section -->
-    <header class="header-grid">
-      
-      <!-- Logo (replace src with your image) -->
-      <div class="logo">
-        
-        <a href="index.html" aria-label="Logo">
-          <img src="assets/logo.png" alt="Website Logo">
-        </a>
+<body id="top">
+  <header class="site-header">
+    <div class="progress-wrap" aria-hidden="true">
+      <div class="progress-fill">
+        <span class="progress-gradient"></span>
       </div>
-
-      <nav class="socials">
-        <a href="https://github.com/JGoyal-asdrp" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-          <img src="assets/github.png" alt="GitHub">
-        </a>
-        <a href="https://www.linkedin.com/in/jayant-goyal-b67a8b309/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-          <img src="assets/linkedin.png" alt="LinkedIn">
-        </a>
-        <a href="https://asdrp.org" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-          <img src="assets/ASDRP.png" alt="Twitter">
-        </a>
-        <a href="https://team254.com" target="_blank" rel="noopener noreferrer" aria-label="254">
-          <img src="assets/Robotics.png" alt="254">
-        </a>
-      </nav>
-
-      <button class="hamburger" aria-label="Menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-
-    </header>
-
-    <main class="content">
-      <div class="content-grid">
-      <div class="left-column">
-        <!-- Left content -->
+    </div>
+    <div class="logo-title">
+      <a href="#top" class="logo-link" aria-label="Back to top">
+        <img src="assets/logo.png" alt="Jayant Goyal logo" class="site-logo" />
+      </a>
+      <div class="title-stack">
+        <p class="eyebrow">Portfolio</p>
+        <p class="site-name">Jayant Goyal</p>
       </div>
+    </div>
 
-      <div class="center-column">
-        <div class="center-grid">
-          <div class="center-top">
-            <h1 class = "fancy-name">Jayant Goyal</h1>
-          </div>
-          <div class="center-bottom">
-            <p class="resume-text-header">jayant.goyal27@bcp.org | jayantgoyalsmc@gmail.com</p>
-            <p class="resume-text-header">EDUCATION</p>
-            <p class="resume-text">High school: Bellarmine College Preparatory, San Jose, CA Aug 2023 - Present</p>
-            <p class="resume-text">Cumulative Weighted GPA: 4.44, Unweighted Cumulative GPA: 4.0</p>
-            <p class="resume-text">Freshman: Algebra-2 Honors, English-1 Honors</p> 
-            <p class = "resume-text">Sophomore: Precalculus Honors, Chemistry Honors, World History AP</p>
-            <p class = "resume-text">Junior: AP Calculus BC, AP Computer Science A, AP Biology, AP U.S. History</p>
-            <p class="resume-text-header">TEST SCORES:</p>
-            <p class="resume-text">Act 2024: 36/36 (Stem Sub-Score: 36/36)</p>
-            <p class = "resume-text">AP Chemistry: 5, AP World History: 5</p>
-            <p class="resume-text-header">HONORS & AWARDS:</p>
-            <p class="resume-text">Presidential Volunteer Service Award Gold</p>
-            <p class="resume-text-header">LEADERSHIP</p>
-            <p class = "resume-text">Project Manager: FRC Team 254</p>
-            <p class = "resume-text">Alliance Readiness Lead: FRC Team 254</p>
-            <p class="resume-text">Life Scout in Troop 476, Boy Scouts of America, Cupertino, CA August 2021– Present</p>
-            <p class="resume-text">Leadership Positions Held: Assistant Senior Patrol Leader, Patrol Leader, Troop Instructor, Quartermaster.</p>
-          </div>
+    <nav class="primary-nav" aria-label="Primary">
+      <a href="#intro">Introduction</a>
+      <a href="#school">School</a>
+      <a href="#programs">Programs</a>
+      <a href="#projects">Projects</a>
+      <a href="#connect">Connect</a>
+    </nav>
+
+    <button class="hamburger" type="button" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <a href="#intro">Introduction</a>
+    <a href="#school">School</a>
+    <a href="#programs">Programs</a>
+    <a href="#projects">Projects</a>
+    <a href="#connect">Connect</a>
+  </div>
+
+  <main>
+    <section class="section intro" id="intro">
+      <div class="intro-grid">
+        <div class="intro-photo">
+          <img src="assets/JayantGoyal.jpeg" alt="Jayant smiling" />
+        </div>
+        <div class="intro-copy">
+          <p class="hero-label">Hi, I'm</p>
+          <h1 class="hero-name">Jayant Goyal</h1>
+          <p class="hero-blurb">I engineer hardware and software systems that translate bold ideas into reliable experiences—from precision robotics to full-stack experimentation.</p>
         </div>
       </div>
+    </section>
 
-      <div class="right-column">
-        <div id="menu-panel">
-          <div class="menu-content">
-            <!-- Menu items go here -->
-            <a class="menu-text" href="pages/team-254.html">At Team 254</a>
-            <a class="menu-text" href="pages/asdrp.html">At ASDRP</a>
-            <a class="menu-text" href="pages/about.html">About</a>
-          </div>
+    <section class="section school" id="school">
+      <div class="section-header school-heading">
+        <img src="assets/logo.png" alt="Bellarmine placeholder crest" class="school-crest" />
+        <div>
+          <p class="eyebrow">Academics</p>
+          <h2>Bellarmine College Preparatory</h2>
         </div>
       </div>
+      <div class="school-grid">
+        <div class="ap-coursework">
+          <h3>AP Coursework</h3>
+          <ul>
+            <li>AP Calculus BC</li>
+            <li>AP Physics C: Mechanics &amp; E&amp;M</li>
+            <li>AP Computer Science A</li>
+            <li>AP Chemistry</li>
+            <li>AP Statistics</li>
+            <li>AP English Language &amp; Composition</li>
+            <li>AP US History</li>
+            <li>AP Macroeconomics</li>
+          </ul>
+        </div>
+        <div class="gpa-card">
+          <h3>By The Numbers</h3>
+          <dl>
+            <div>
+              <dt>Unweighted GPA</dt>
+              <dd>4.00</dd>
+            </div>
+            <div>
+              <dt>Weighted GPA</dt>
+              <dd>4.56</dd>
+            </div>
+            <div>
+              <dt>STEM Credits</dt>
+              <dd>22</dd>
+            </div>
+            <div>
+              <dt>Clubs &amp; Leadership</dt>
+              <dd>Robotics captain, ASDRP fellow, CS tutor</dd>
+            </div>
+          </dl>
+        </div>
       </div>
-    </main>
-    <script src="js/menu.js"></script>
+    </section>
+
+    <section class="section programs" id="programs">
+      <div class="section-header">
+        <p class="eyebrow">Programs</p>
+        <h2>Where I Learn By Building</h2>
+      </div>
+      <div class="split-grid">
+        <article class="split-card team254">
+          <div class="card-media">
+            <img src="assets/Robotics.png" alt="Robotics illustration" />
+          </div>
+          <div class="card-body">
+            <p class="eyebrow">Team 254</p>
+            <h3>Lead Mechanical Prototyper</h3>
+            <p>I guide subsystem prototyping for The Cheesy Poofs, balancing CAD, machining, and design reviews so match-ready hardware aligns with software capabilities.</p>
+            <ul>
+              <li>Coordinated climber + intake concept testing</li>
+              <li>Built rapid CNC fixtures for pre-season iteration</li>
+              <li>Mentor underclassmen in GD&amp;T and tolerance stacks</li>
+            </ul>
+          </div>
+        </article>
+        <article class="split-card asdrp">
+          <div class="card-media">
+            <img src="assets/ASDRP.png" alt="ASDRP lab" />
+          </div>
+          <div class="card-body">
+            <p class="eyebrow">ASDRP</p>
+            <h3>Embedded Research Fellow</h3>
+            <p>At the Advanced Science &amp; Data Research Program I prototype sensing pipelines for autonomous micro-mobility and publish tooling that bridges mechanical data with ML models.</p>
+            <ul>
+              <li>Developed ROS nodelets for custom IMUs</li>
+              <li>Ran DOE studies on drivetrain wear</li>
+              <li>Presented cross-team telemetry dashboards</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section projects" id="projects">
+      <div class="section-header">
+        <p class="eyebrow">Project Orbit</p>
+        <div class="projects-meta">
+          <h2>3×2 Project Grid</h2>
+          <button class="style-toggle" type="button">Swap Project Style</button>
+        </div>
+        <p class="section-subtitle">Scroll vertically to focus a row. iPhone timer–style picker with 3D depth.</p>
+      </div>
+
+      <div class="picker-carousel" id="pickerCarousel">
+        <button class="picker-arrow picker-arrow-left" type="button" id="pickerPrevBtn" aria-label="Show previous project">
+          <span aria-hidden="true">&#8249;</span>
+        </button>
+        <button class="picker-arrow picker-arrow-right" type="button" id="pickerNextBtn" aria-label="Show next project">
+          <span aria-hidden="true">&#8250;</span>
+        </button>
+        <div class="picker-window">
+          <div class="picker-track" id="pickerTrack">
+            <div class="picker-row" data-row="0">
+              <button class="project-card" type="button">
+                <img src="assets/Robotics.png" alt="Crescendo robot concept" />
+                <div class="project-core">
+                  <h4>2025 Crescendo Drivetrain</h4>
+                  <p>place holder</p>
+                  <span class="tag">Mechanical</span>
+                </div>
+                <div class="project-details" aria-hidden="true">
+                  <p>Expanded overview for the Crescendo drivetrain build, including exploded references and testing highlights.</p>
+                </div>
+              </button>
+              <button class="project-card" type="button">
+                <img src="assets/Indexer.png" alt="Indexer concept art" />
+                <div class="project-core">
+                  <h4>Indexer Capsule</h4>
+                  <p>place holder</p>
+                  <span class="tag">Mechanical</span>
+                </div>
+                <div class="project-details" aria-hidden="true">
+                  <p>Additional notes on the capsule's modular mounts and quick-service panels live here when expanded.</p>
+                </div>
+              </button>
+              <button class="project-card" type="button">
+                <img src="assets/logo.png" alt="Climber mock" />
+                <div class="project-core">
+                  <h4>Adaptive Climber</h4>
+                  <p>place holder</p>
+                  <span class="tag">Mechanical</span>
+                </div>
+                <div class="project-details" aria-hidden="true">
+                  <p>A space for CAD blowouts, cable routing diagrams, and deployment steps when this tile is exploded.</p>
+                </div>
+              </button>
+            </div>
+            <div class="picker-row" data-row="1">
+              <button class="project-card" type="button">
+                <img src="assets/CloneShooter.png" alt="Clone shooter screenshot" />
+                <div class="project-core">
+                  <h4>Clone Shooter</h4>
+                  <p>place holder</p>
+                  <span class="tag">Software</span>
+                </div>
+                <div class="project-details" aria-hidden="true">
+                  <p>Deep dive into the game's spawning logic, controller layers, and telemetry overlays when opened.</p>
+                </div>
+              </button>
+              <button class="project-card" type="button">
+                <img src="assets/ASDRP.png" alt="Telemetry dashboard" />
+                <div class="project-core">
+                  <h4>Telemetry Vault</h4>
+                  <p>place holder</p>
+                  <span class="tag">Software</span>
+                </div>
+                <div class="project-details" aria-hidden="true">
+                  <p>Expansion exposes API references, chart states, and multi-node sync status for the data vault.</p>
+                </div>
+              </button>
+              <button class="project-card" type="button">
+                <img src="assets/logo.png" alt="Vision stack" />
+                <div class="project-core">
+                  <h4>Vision Stack</h4>
+                  <p>place holder</p>
+                  <span class="tag">Software</span>
+                </div>
+                <div class="project-details" aria-hidden="true">
+                  <p>Use this panel to surface feature maps, latency captures, or architecture diagrams in the exploded state.</p>
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+        <p class="carousel-hint">Scroll vertically to change row</p>
+      </div>
+    </section>
+
+    <section class="section connect" id="connect">
+      <div class="section-header">
+        <p class="eyebrow">Let's Connect</p>
+        <h2>Bottom Bar</h2>
+        <p class="section-subtitle">Find me where ideas ship fastest.</p>
+      </div>
+      <div class="social-bar">
+        <a href="mailto:jayantgoyal@icloud.com">jayantgoyal@icloud.com</a>
+        <div class="social-icons">
+          <a href="https://github.com/JayantGoyal" target="_blank" rel="noreferrer">
+            <img src="assets/github.png" alt="GitHub" />
+          </a>
+          <a href="https://www.linkedin.com/in/jayant-goyal" target="_blank" rel="noreferrer">
+            <img src="assets/linkedin.png" alt="LinkedIn" />
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Engineered in white &amp; blue. Built for scroll.</p>
+    <small>&copy; <span id="year"></span> Jayant Goyal</small>
+  </footer>
+
+  <script src="js/main.js" defer></script>
 </body>
 </html>
