@@ -1,92 +1,282 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Jayant Goyal</title>
-  <link rel="stylesheet" href="css/landing.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Space+Grotesk:wght@500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/landing.css" />
 </head>
-<body>
-  <div class="page-grid">
-    <!-- Top section -->
-    <header class="header-grid">
-      
-      <!-- Logo (replace src with your image) -->
-      <div class="logo">
-        
-        <a href="index.html" aria-label="Logo">
-          <img src="assets/logo.png" alt="Website Logo">
-        </a>
+<body id="top">
+  <header class="site-header">
+    <div class="progress-wrap" aria-hidden="true">
+      <div class="progress-fill">
+        <span class="progress-gradient"></span>
       </div>
-
-      <nav class="socials">
-        <a href="https://github.com/JGoyal-asdrp" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-          <img src="assets/github.png" alt="GitHub">
-        </a>
-        <a href="https://www.linkedin.com/in/jayant-goyal-b67a8b309/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-          <img src="assets/linkedin.png" alt="LinkedIn">
-        </a>
-        <a href="https://asdrp.org" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-          <img src="assets/ASDRP.png" alt="Twitter">
-        </a>
-        <a href="https://team254.com" target="_blank" rel="noopener noreferrer" aria-label="254">
-          <img src="assets/Robotics.png" alt="254">
-        </a>
-      </nav>
-
-      <button class="hamburger" aria-label="Menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-
-    </header>
-
-    <main class="content">
-      <div class="content-grid">
-      <div class="left-column">
-        <!-- Left content -->
+    </div>
+    <div class="logo-title">
+      <a href="#top" class="logo-link" aria-label="Back to top">
+        <img src="assets/logo.png" alt="Jayant Goyal logo" class="site-logo" />
+      </a>
+      <div class="title-stack">
+        <p class="site-name">Jayant Goyal</p>
       </div>
+    </div>
 
-      <div class="center-column">
-        <div class="center-grid">
-          <div class="center-top">
-            <h1 class = "fancy-name">Jayant Goyal</h1>
-          </div>
-          <div class="center-bottom">
-            <p class="resume-text-header">jayant.goyal27@bcp.org | jayantgoyalsmc@gmail.com</p>
-            <p class="resume-text-header">EDUCATION</p>
-            <p class="resume-text">High school: Bellarmine College Preparatory, San Jose, CA Aug 2023 - Present</p>
-            <p class="resume-text">Cumulative Weighted GPA: 4.44, Unweighted Cumulative GPA: 4.0</p>
-            <p class="resume-text">Freshman: Algebra-2 Honors, English-1 Honors</p> 
-            <p class = "resume-text">Sophomore: Precalculus Honors, Chemistry Honors, World History AP</p>
-            <p class = "resume-text">Junior: AP Calculus BC, AP Computer Science A, AP Biology, AP U.S. History</p>
-            <p class="resume-text-header">TEST SCORES:</p>
-            <p class="resume-text">Act 2024: 36/36 (Stem Sub-Score: 36/36)</p>
-            <p class = "resume-text">AP Chemistry: 5, AP World History: 5</p>
-            <p class="resume-text-header">HONORS & AWARDS:</p>
-            <p class="resume-text">Presidential Volunteer Service Award Gold</p>
-            <p class="resume-text-header">LEADERSHIP</p>
-            <p class = "resume-text">Project Manager: FRC Team 254</p>
-            <p class = "resume-text">Alliance Readiness Lead: FRC Team 254</p>
-            <p class="resume-text">Life Scout in Troop 476, Boy Scouts of America, Cupertino, CA August 2021– Present</p>
-            <p class="resume-text">Leadership Positions Held: Assistant Senior Patrol Leader, Patrol Leader, Troop Instructor, Quartermaster.</p>
-          </div>
+    <nav class="primary-nav" aria-label="Primary">
+      <a href="#intro">Introduction</a>
+      <a href="#school">School</a>
+      <a href="#programs">Programs</a>
+      <a href="#projects">Projects</a>
+      <a href="#connect">Connect</a>
+    </nav>
+
+    <button class="hamburger" type="button" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <a href="#intro">Introduction</a>
+    <a href="#school">School</a>
+    <a href="#programs">Programs</a>
+    <a href="#projects">Projects</a>
+    <a href="#connect">Connect</a>
+  </div>
+
+  <main>
+    <section class="section intro" id="intro">
+      <div class="intro-grid">
+        <div class="intro-photo">
+          <img src="assets/JayantGoyal.jpeg" alt="Jayant smiling" />
+        </div>
+        <div class="intro-copy">
+          <p class="hero-label">Hi, I'm</p>
+          <h1 class="hero-name">Jayant Goyal</h1>
+          <p class="hero-blurb">I'm an aspiring engineer who hopes to build skills, experience and projects in all forms of engineering. I particularly enjoy computer science and mechanical deisgn.</p>
         </div>
       </div>
+    </section>
 
-      <div class="right-column">
-        <div id="menu-panel">
-          <div class="menu-content">
-            <!-- Menu items go here -->
-            <a class="menu-text" href="pages/team-254.html">At Team 254</a>
-            <a class="menu-text" href="pages/asdrp.html">At ASDRP</a>
-            <a class="menu-text" href="pages/about.html">About</a>
-          </div>
+    <section class="section school" id="school">
+      <div class="section-header school-heading">
+        <img src="assets/Bellarmine.png" alt="Bellarmine placeholder crest" class="school-crest" />
+        <div>
+          <p class="eyebrow">A look into my time at</p>
+          <h2>Bellarmine College Preparatory</h2>
         </div>
       </div>
+      <div class="school-grid">
+        <div class="ap-coursework">
+          <h3>AP Coursework</h3>
+          <ul>
+            <li>AP Calculus BC</li>
+            <li>AP Computer Science A</li>
+            <li>AP US History</li>
+            <li>AP Biology</li>
+            <li>AP Chemistry: 5</li>
+            <li>AP World History: 5</li>
+          </ul>
+        </div>
+        <div class="gpa-card">
+          <h3>By The Numbers</h3>
+          <dl>
+            <div>
+              <dt>Unweighted GPA</dt>
+              <dd>4.00</dd>
+            </div>
+            <div>
+              <dt>Weighted GPA</dt>
+              <dd>4.44</dd>
+            </div>
+            <div>
+              <dt>ACT:</dt>
+              <dd>36</dd>
+            </div>
+            <div>
+              <dt>Clubs &amp; Leadership</dt>
+              <dd>Robotics Project Manager, Math Club, Precalculus Honors TA</dd>
+            </div>
+          </dl>
+        </div>
       </div>
-    </main>
-    <script src="js/menu.js"></script>
+    </section>
+
+    <section class="section programs" id="programs">
+      <div class="section-header">
+        <p class="eyebrow">Programs</p>
+        <h2>Where Mechanical Meets Software</h2>
+      </div>
+      <div class="split-grid">
+        <article class="split-card program-card team254" role="button" tabindex="0" aria-expanded="false">
+          <div class="card-media" aria-hidden="true">
+            <img src="assets/Robotics.png" alt="Robotics illustration" />
+          </div>
+          <div class="card-body">
+            <div class="card-head">
+              <p class="eyebrow">Team 254</p>
+              <h3>Project Manager; Alliance Readiness Lead</h3>
+            </div>
+            <p class="card-summary">I manage more than 10 projects at a time, cataloging updates, needs, blockers, and communications.</p>
+            <p class="card-hint" data-expanded-label="Click to close">Click to learn more</p>
+            <div class="card-details" aria-hidden="true">
+              <p>I've owned and led the prototyping, design, and assembly of multiple subsystems that have competed at championship events.</p>
+              <ul>
+                <li>Proficient with SolidWorks, Onshape</li>
+                <li>Teach incoming students the basics of mechanical design and CAD</li>
+                <li>I aid other teams with robot issues during competitions.</li>
+                <li>See my leadership at <a href="https://www.team254.com/leaders/">Team 254 Leadership</a></li>
+              </ul>
+              </div>
+          </div>
+        </article>
+        <article class="split-card program-card asdrp" role="button" tabindex="0" aria-expanded="false">
+          <div class="card-media" aria-hidden="true">
+            <img src="assets/ASDRP.png" alt="ASDRP lab" />
+          </div>
+          <div class="card-body">
+            <div class="card-head">
+              <p class="eyebrow">ASDRP</p>
+              <h3>Student Researcher</h3>
+            </div>
+            <p class="card-summary">Dennis Liu Research Group</p>
+            <p class="card-hint" data-expanded-label="Click to close">Click to learn more</p>
+            <div class="card-details" aria-hidden="true">
+              <p>I completed the training semester, created multiple mini-projects, and will soon contribute to a program-wide iOS application.</p>
+              <ul>
+                <li>Gaining experience with SwiftUI and backend APIs</li>
+                <li>Work with and contribute for peers through code reviews</li>
+                <li>Built this website!</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section projects" id="projects">
+      <div class="section-header">
+        <p class="eyebrow">Take a look at some of my</p>
+        <div class="projects-meta">
+          <h2>Projects</h2>
+        </div>
+        <p class="section-subtitle">Click on each card to learn more!</p>
+      </div>
+
+      <div class="picker-carousel" id="pickerCarousel">
+        <button class="picker-arrow picker-arrow-left" type="button" id="pickerPrevBtn" aria-label="Show previous project">
+          <span aria-hidden="true">&#8249;</span>
+        </button>
+        <button class="picker-arrow picker-arrow-right" type="button" id="pickerNextBtn" aria-label="Show next project">
+          <span aria-hidden="true">&#8250;</span>
+        </button>
+        <div class="picker-window">
+          <div class="picker-track" id="pickerTrack">
+            <div class="picker-row" data-row="0">
+              <button class="project-card" type="button">
+                <img src="assets/Climber.png" alt="Climber" />
+                <div class="project-core">
+                  <h4>2025 Offseason Climber</h4>
+                  <span class="tag">Mechanical</span>
+                </div>
+                <div class="project-details" aria-hidden="true">
+                  <p>Attached to Team 254's <a href="https://www.chiefdelphi.com/t/wcp-2025-26-product-release-updates/504530/126">Offseason Robot</a></p>
+                  <p>Competition videos: <a href="https://www.youtube.com/watch?v=8knSEvDQJ5k" target="_blank" rel="noreferrer">2025 MadTown Throdown Day 1</a> and <a href="https://www.youtube.com/watch?v=htdIVjA5_RM" target="_blank" rel="noreferrer">2025 MadTown Day 2</a></p>
+                </div>
+              </button>
+              <button class="project-card" type="button">
+                <img src="assets/Indexer.png" alt="Indexer" />
+                <div class="project-core">
+                  <h4>2025 Competition Indexer</h4>
+                  <p>2025 Championship Division Finalist</p>
+                  <span class="tag">Mechanical</span>
+                </div>
+                <div class="project-details" aria-hidden="true">
+                  <p>Attached to Team 254's 2025 <a href="https://www.chiefdelphi.com/t/team-254-presents-2025-undertow-technical-binder-code-q-a/506115">Competition Robot</a></p>
+                  <p>Competition Results: <a href="https://www.thebluealliance.com/team/254/2025">The Blue Alliance</a></p>
+                </div>
+              </button>
+              <button class="project-card" type="button">
+                <img src="assets/CloneShooter.png" alt="Clone Shooter" />
+                <div class="project-core">
+                  <h4>2024 Offseason Shooter</h4>
+                  <span class="tag">Mechanical</span>
+                </div>
+                <div class="project-details" aria-hidden="true">
+                  <p>Attached to Team 254's 2024 <a href="https://www.instagram.com/p/DCQNJhXvBLo/?hl=en&img_index=1">Offseason Robot</a></p>
+                </div>
+              </button>
+            </div>
+            <div class="picker-row" data-row="1">
+              <button class="project-card" type="button">
+                <img src="assets/App.jpg" alt="App Developmeny" />
+                <div class="project-core">
+                  <h4>ASDRP IOS App</h4>
+                  <p>Swift and SwiftUI</p>
+                  <span class="tag">Software</span>
+                </div>
+                <div class="project-details" aria-hidden="true">
+                  <p>Will soon contribute to features, testing, and publishing the app.</p>
+                </div>
+              </button>
+              <button class="project-card" type="button">
+                <img src="assets/api.jpg" alt="APIs" />
+                <div class="project-core">
+                  <h4>API Presentation</h4>
+                  <p>Created a presentation explaining the workings and uses of APIs.</p>
+                  <span class="tag">Software</span>
+                </div>
+                <div class="project-details" aria-hidden="true">
+                </div>
+              </button>
+              <button class="project-card" type="button">
+                <img src="assets/ASDRP.png" alt="Training Semester" />
+                <div class="project-core">
+                  <h4>Dennis Liu Research Group Training Semster</h4>
+                  <span class="tag">Software</span>
+                </div>
+                <div class="project-details" aria-hidden="true">
+                  <p>Reviewed the fundamentals of computer science and clean code. Built and review multiple mini projects.</p>
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+        <p class="carousel-hint">Swipe vertically to change rows or horizontally to browse each row</p>
+      </div>
+    </section>
+
+    <section class="section connect" id="connect">
+      <div class="section-header">
+        <p class="eyebrow">See my progress with my</p>
+        <h2>Socials</h2>
+      </div>
+      <div class="social-bar">
+        <a href="mailto:jayantgoyalsmc@gmail.com">jayantgoyalsmc@gmail.com</a>
+        <div class="social-icons">
+          <a href="https://github.com/JGoyal-asdrp" target="_blank" rel="noreferrer">
+            <img src="assets/github.png" alt="GitHub" />
+          </a>
+          <a href="https://www.linkedin.com/in/jayant-goyal-b67a8b309" target="_blank" rel="noreferrer">
+            <img src="assets/linkedin.png" alt="LinkedIn" />
+          </a>
+          <a href="https://team254.com" target="_blank" rel="noreferrer">
+            <img src="assets/Robotics.png" alt="Robotics portfolio" />
+          </a>
+          <a href="https://www.asdrp.org" target="_blank" rel="noreferrer">
+            <img src="assets/ASDRP.png" alt="ASDRP program" />
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/main.js" defer></script>
 </body>
 </html>
