@@ -3,21 +3,26 @@ const mobileMenu = document.getElementById('mobileMenu');
 const progressWrap = document.querySelector('.progress-wrap');
 const progressFill = document.querySelector('.progress-fill');
 const progressGradient = document.querySelector('.progress-gradient');
-const swapButton = document.querySelector('.style-toggle');
-const projectsSection = document.querySelector('.projects');
 const pickerCarousel = document.getElementById('pickerCarousel');
 const pickerTrack = document.getElementById('pickerTrack');
 const pickerRows = document.querySelectorAll('.picker-row');
 const pickerPrevButton = document.getElementById('pickerPrevBtn');
 const pickerNextButton = document.getElementById('pickerNextBtn');
-const yearTarget = document.getElementById('year');
 const navLinks = document.querySelectorAll('.primary-nav a, #mobileMenu a');
+const programCards = document.querySelectorAll('.program-card');
+const programGrid = document.querySelector('.programs .split-grid');
 
 const GRADIENT_SEGMENT = 60;
 const ROW_COUNT = 2;
 let focusRow = 0;
 let touchStartY = 0;
+const rowTouchState = new WeakMap();
+const rowWheelState = new WeakMap();
+const COLUMN_SCROLL_THRESHOLD = 55;
+const COLUMN_SWIPE_THRESHOLD = 40;
+const HORIZONTAL_INTENT_EPSILON = 8;
 const rowColumnState = new Map();
+let expandedProgramIndex = -1;
 
 const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
 
@@ -135,14 +140,16 @@ function setRowColumnFocus(row, nextIndex, shouldUpdate = true) {
 
 function focusRowColumnNext(row) {
   const state = rowColumnState.get(row);
-  if (!state || state.focus >= state.cards.length - 1) return;
+  if (!state || state.focus >= state.cards.length - 1) return false;
   setRowColumnFocus(row, state.focus + 1);
+  return true;
 }
 
 function focusRowColumnPrev(row) {
   const state = rowColumnState.get(row);
-  if (!state || state.focus <= 0) return;
+  if (!state || state.focus <= 0) return false;
   setRowColumnFocus(row, state.focus - 1);
+  return true;
 }
 
 function updateColumnNavState() {
@@ -176,6 +183,182 @@ function initRowColumnPicker() {
     cards.forEach((card, index) => {
       card.addEventListener('click', () => handleCardInteraction(row, index));
     });
+
+    attachRowScrollHandlers(row);
+  });
+}
+
+function handleRowWheelGesture(row, deltaX) {
+  const state = rowWheelState.get(row) ?? { buffer: 0, timeoutId: null };
+  const delta = Number.isFinite(deltaX) ? deltaX : 0;
+  state.buffer += delta;
+  clearTimeout(state.timeoutId);
+  state.timeoutId = setTimeout(() => {
+    state.buffer = 0;
+  }, 180);
+
+  while (Math.abs(state.buffer) >= COLUMN_SCROLL_THRESHOLD) {
+    const moved = state.buffer > 0 ? focusRowColumnNext(row) : focusRowColumnPrev(row);
+    if (!moved) {
+      state.buffer = 0;
+      break;
+    }
+    state.buffer += state.buffer > 0 ? -COLUMN_SCROLL_THRESHOLD : COLUMN_SCROLL_THRESHOLD;
+  }
+
+  rowWheelState.set(row, state);
+}
+
+function attachRowScrollHandlers(row) {
+  row.addEventListener(
+    'wheel',
+    (event) => {
+      const horizontalIntent = Math.abs(event.deltaX) > Math.abs(event.deltaY) || event.shiftKey;
+      if (!horizontalIntent) return;
+      const delta = event.shiftKey && Math.abs(event.deltaX) < 1 ? event.deltaY : event.deltaX;
+      event.preventDefault();
+      event.stopPropagation();
+      handleRowWheelGesture(row, delta);
+    },
+    { passive: false }
+  );
+
+  row.addEventListener(
+    'touchstart',
+    (event) => {
+      if (event.touches.length !== 1) return;
+      const touch = event.touches[0];
+      rowTouchState.set(row, {
+        startX: touch.clientX,
+        startY: touch.clientY,
+        handled: false,
+      });
+    },
+    { passive: true }
+  );
+
+  row.addEventListener(
+    'touchmove',
+    (event) => {
+      const state = rowTouchState.get(row);
+      if (!state) return;
+      const touch = event.touches[0];
+      const dx = touch.clientX - state.startX;
+      const dy = touch.clientY - state.startY;
+      if (!state.handled && Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > HORIZONTAL_INTENT_EPSILON) {
+        state.handled = true;
+      }
+
+      if (state.handled) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+    },
+    { passive: false }
+  );
+
+  function finishTouchSwipe(event) {
+    const state = rowTouchState.get(row);
+    if (!state) return;
+    if (state.handled) {
+      const touch = (event.changedTouches && event.changedTouches[0]) || event;
+      const dx = touch.clientX - state.startX;
+      const swipeDistance = Math.abs(dx);
+      if (swipeDistance > COLUMN_SWIPE_THRESHOLD) {
+        const direction = dx < 0 ? 1 : -1;
+        const steps = Math.max(1, Math.round(swipeDistance / COLUMN_SWIPE_THRESHOLD));
+        for (let i = 0; i < steps; i += 1) {
+          const moved = direction > 0 ? focusRowColumnNext(row) : focusRowColumnPrev(row);
+          if (!moved) break;
+        }
+      }
+      event.stopPropagation();
+    }
+    rowTouchState.delete(row);
+  }
+
+  row.addEventListener('touchend', finishTouchSwipe, { passive: false });
+  row.addEventListener(
+    'touchcancel',
+    () => {
+      rowTouchState.delete(row);
+    },
+    { passive: true }
+  );
+}
+
+const programCardList = Array.from(programCards);
+
+function resetProgramCards() {
+  programCardList.forEach((card) => {
+    card.classList.remove('is-expanded', 'is-sidelined-left', 'is-sidelined-right');
+    card.setAttribute('aria-expanded', 'false');
+    const details = card.querySelector('.card-details');
+    if (details) {
+      details.setAttribute('aria-hidden', 'true');
+    }
+    const hint = card.querySelector('.card-hint');
+    if (hint) {
+      const defaultLabel = hint.dataset.defaultLabel || hint.textContent;
+      hint.textContent = defaultLabel;
+      hint.dataset.defaultLabel = defaultLabel;
+    }
+  });
+  expandedProgramIndex = -1;
+  if (programGrid) {
+    programGrid.classList.remove('has-expanded');
+  }
+}
+
+function toggleProgramCard(targetCard) {
+  const cardIndex = programCardList.indexOf(targetCard);
+  if (cardIndex === -1) return;
+
+  const shouldCollapse = cardIndex === expandedProgramIndex;
+  resetProgramCards();
+
+  if (shouldCollapse) {
+    return;
+  }
+
+  expandedProgramIndex = cardIndex;
+  targetCard.classList.add('is-expanded');
+  targetCard.setAttribute('aria-expanded', 'true');
+  const details = targetCard.querySelector('.card-details');
+  if (details) {
+    details.setAttribute('aria-hidden', 'false');
+  }
+  const hint = targetCard.querySelector('.card-hint');
+  if (hint) {
+    const expandedLabel = hint.dataset.expandedLabel || 'Click to close';
+    hint.textContent = expandedLabel;
+  }
+
+  if (programGrid) {
+    programGrid.classList.add('has-expanded');
+  }
+
+  programCardList.forEach((card, index) => {
+    if (card === targetCard) return;
+    card.classList.add(index < cardIndex ? 'is-sidelined-left' : 'is-sidelined-right');
+  });
+}
+
+function initProgramCards() {
+  if (!programCardList.length) return;
+  programCardList.forEach((card) => {
+    const hint = card.querySelector('.card-hint');
+    if (hint && !hint.dataset.defaultLabel) {
+      hint.dataset.defaultLabel = hint.textContent.trim();
+    }
+
+    card.addEventListener('click', () => toggleProgramCard(card));
+    card.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        toggleProgramCard(card);
+      }
+    });
   });
 }
 
@@ -186,6 +369,7 @@ document.addEventListener('DOMContentLoaded', () => {
   updateProgressBar();
   updatePickerFocus();
   initRowColumnPicker();
+  initProgramCards();
 
   if (hamburger) {
     hamburger.addEventListener('click', () => toggleMenu());
@@ -199,6 +383,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (pickerCarousel) {
     pickerCarousel.addEventListener('wheel', (e) => {
+      const verticalIntent = Math.abs(e.deltaY) >= Math.abs(e.deltaX) && !e.shiftKey;
+      if (!verticalIntent) return;
       e.preventDefault();
       if (e.deltaY > 0) pickerNext();
       else if (e.deltaY < 0) pickerPrev();
@@ -231,13 +417,4 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  if (swapButton && projectsSection) {
-    swapButton.addEventListener('click', () => {
-      projectsSection.classList.toggle('projects-alt');
-    });
-  }
-
-  if (yearTarget) {
-    yearTarget.textContent = new Date().getFullYear();
-  }
 });
